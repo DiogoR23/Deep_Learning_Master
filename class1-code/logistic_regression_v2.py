@@ -180,7 +180,7 @@ def mapFeature(X1, X2, degrees = 6):
 
 def testreg():
     
-    ds= Dataset("log-ex2.data")   
+    ds= Dataset("class1-code/log-ex2.data")   
        
     logmodel = LogisticRegression(ds)
     ds.plotBinaryData()
@@ -197,7 +197,7 @@ def testreg():
     logmodel.plotModel2()    
     
 def testdataset():
-    ds = Dataset("hearts-bin.data")
+    ds = Dataset("class1-code/hearts-bin.data")
 
     model = LogisticRegression(ds, True, regularization = True, lamda = 1)
     
@@ -205,5 +205,5 @@ def testdataset():
     
 
 if __name__ == '__main__':
-    #testreg()
-    testdataset()
+    testreg()
+    # testdataset()
