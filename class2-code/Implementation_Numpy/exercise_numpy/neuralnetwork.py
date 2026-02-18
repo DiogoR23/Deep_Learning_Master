@@ -7,7 +7,7 @@ from layers import DenseLayer
 
 
 
-class NeuralNetwork:
+class NeuralNetwork(DenseLayer):
  
     def __init__(self):
         # attributes
@@ -23,8 +23,9 @@ class NeuralNetwork:
 
     def forward_propagation(self, X, training):
         output = X
-        # complete
-        return None
+        for layer in self.layers:
+            output = layer.forward_propagation(output, training)
+        return output
 
     def predict(self, dataset):
         return self.forward_propagation(dataset.X, training=False)
@@ -41,19 +42,27 @@ if __name__ == '__main__':
     from data import read_csv
 
     # training data
-    dataset = read_csv('xnor.data', sep=',', features=False, label=True)
+    dataset = read_csv('class2-code/Implementation_Numpy/exercise_numpy/xnor.data', sep=',', features=False, label=True)
 
     # network - complete code
     net = NeuralNetwork()
     n_features = dataset.X.shape[1]
+
+    net.add(DenseLayer(2, (n_features,)), biases=np.array([[-30, 10]]), weights=np.array([[20, -20], [20, -20]]))
+    net.add(SigmoidActivation())
+    net.add(DenseLayer(1), biases=np.array([[-10]]), weights=np.array([[20], [20]]))
+    net.add(SigmoidActivation())
+
+
     # complete here to create the network - 1 hidden layer with 2 neurons + one output layer
     # weights should be the ones from the hands-on exercise
     # activation layer should be Sigmoid
     #net.add(DenseLayer(2, (n_features,)), ...)
     #net.add(...)
+
     
     print("Predictions for the training dataset:")
-    print(net.predict(dataset))
+    print(net.predict(dataset).round(0))
     
-    
+
 

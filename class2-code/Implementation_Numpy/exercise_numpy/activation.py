@@ -6,7 +6,6 @@ import numpy as np
 from layers import Layer
 
 class ActivationLayer(Layer):
-
     def forward_propagation(self, input, training):
         self.input = input
         self.output = self.activation_function(self.input)
@@ -21,16 +20,14 @@ class ActivationLayer(Layer):
 
     def parameters(self):
         return 0
-    
-class SigmoidActivation(ActivationLayer):
 
+
+class SigmoidActivation(ActivationLayer):
     def activation_function(self, input):
-        return None ## complete here
+        return 1 / (1 + np.exp(-input))
 
 
 class ReLUActivation(ActivationLayer):
-
     def activation_function(self, input):
         return np.maximum(0, input)
 
-    
