@@ -22,11 +22,12 @@ class MeanSquaredError(LossFunction):
 
     def derivative(self, y_true, y_pred):
         # To avoid the additional multiplication by -1 just swap the y_pred and y_true.
-        return None ## COMPLETE
+
+        return 2 * (y_pred-y_true) / y_true.size 
 
 
 class BinaryCrossEntropy(LossFunction):
-    
+
     def loss(self, y_true, y_pred):
         # Avoid division by zero
         p = np.clip(y_pred, 1e-15, 1 - 1e-15)
@@ -35,6 +36,5 @@ class BinaryCrossEntropy(LossFunction):
     def derivative(self, y_true, y_pred):
         # Avoid division by zero
         p = np.clip(y_pred, 1e-15, 1 - 1e-15)
-        return NONE  ## COMPLETE
-    
+        return -(y_true / p) + ((1 - y_true) / 1 - p)
     

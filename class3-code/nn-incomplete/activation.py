@@ -35,8 +35,9 @@ class SigmoidActivation(ActivationLayer):
         return 1 / (1 + np.exp(-input))
 
     def derivative(self, input):
-        ## COMPLETE
-        return None
+        derivative = self.activation_function(input) * (1 - self.activation_function(input))
+
+        return derivative
 
 
 class ReLUActivation(ActivationLayer):
@@ -45,6 +46,4 @@ class ReLUActivation(ActivationLayer):
         return np.maximum(0, input)
 
     def derivative(self, input):
-        ## COMPLETE
-        return None
-    
+        return np.where(input < 0, 0, 1)

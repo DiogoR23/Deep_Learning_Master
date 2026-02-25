@@ -54,8 +54,8 @@ class NeuralNetwork:
 
     def backward_propagation(self, output_error):
         error = output_error
-        ## COMPLETE
-        ## for ...
+        for layer in reversed(self.layers):
+            error = layer.backward_propagation(error)
         return error
 
     def fit(self, dataset):
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     from data import read_csv
 
     # training data
-    dataset = read_csv('breast-bin.csv', sep=',', features=True, label=True)
+    dataset = read_csv('C:/Users/diogo/OneDrive/Universidade/Mestrado/1_ano/2_Semestre/Aprendizagem_Profunda/Deep_Learning_Master/class3-code/nn-incomplete/breast-bin.csv', sep=',', features=True, label=True)
 
     # network
     net = NeuralNetwork(epochs=1000, batch_size=16, learning_rate=0.1, verbose=True,
