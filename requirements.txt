@@ -9,3 +9,6 @@ imblearn
 plotly
 datasets
 transformers
+groq
+openai
+mistralai
