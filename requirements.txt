@@ -12,3 +12,4 @@ transformers
 groq
 openai
 mistralai
+kagglehub
