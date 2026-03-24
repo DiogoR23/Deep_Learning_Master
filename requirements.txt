@@ -13,3 +13,4 @@ groq
 openai
 mistralai
 kagglehub
+accelerate
